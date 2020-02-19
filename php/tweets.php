@@ -20,8 +20,8 @@
     -->
     <?php
     // testkod för att koppla till databasen och hämta alla tweets
-    include './src/DbConnection.php';
-    include './src/Tweet.php';
+    include '../src/DbConnection.php';
+    include '../src/Tweet.php';
     
     $dbInstance = DbConnection::getInstance();
     $dbh = $dbInstance->getConnection();

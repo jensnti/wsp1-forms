@@ -9,11 +9,14 @@ Det finns ett par grundläggande uppgifter
 * Skriv klart testHasFields från TweetTest
 * Skriv den metod som failar från TweetTest i Tweet klassen
 
+Kolla sedan index.html för fortsatta uppgifter för hur ni ska skapa era formulär.
+
 Utökade uppgifter
 
 * Skriv klart metoden för att hämta en user, dvs. test ska vara grönt
 * Skriv klart testet för att hämta alla users, dvs. det ska vara rött
 * Skriv klart metoden för att göra testet grönt
+* Koda users.php
 
 # Tester
 
@@ -28,7 +31,7 @@ I detta repo finns ett antal tester för er att köra med phpunit. För att inst
     mysql -u USER -p
     >create database forms;
     exit
-    mysql -u USER -p forms < forms.sql
+    mysql -u USER -p forms < sql/forms.sql
 
 Förhoppningsvis är allt igång, var vaksam på fel.
 För att köra tester skriv

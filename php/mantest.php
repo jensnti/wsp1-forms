@@ -5,9 +5,9 @@
  * Kör detta med php mantest.php
  */
 
-include './src/DbConnection.php';
-include './src/Tweet.php';
-include './src/User.php';
+include '../src/DbConnection.php';
+include '../src/Tweet.php';
+include '../src/User.php';
 
 $dbInstance = DbConnection::getInstance();
 $dbh = $dbInstance->getConnection();

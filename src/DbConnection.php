@@ -9,7 +9,7 @@ class DbConnection {
     // utan istället så anv. vi getInstance metoden
     private function __construct()
     {
-        include './include/dbinfo.php'; // not great
+        require_once dirname(dirname(__FILE__)) . '/include/dbinfo.php'; #works fine.
 
         try {
             $this->dbh = new PDO(

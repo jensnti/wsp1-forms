@@ -1,0 +1,3 @@
+include/dbinfo.php
+vendor/
+composer.lock

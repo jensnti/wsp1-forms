@@ -1,0 +1,46 @@
+body {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+main {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+
+h1 {
+    padding-top: .5rem;
+    font-size: 3rem;
+    font-weight: 600;
+}
+h2 {
+    padding-top: .5rem;
+    color: rgba(0,0,0,0.75);
+    font-size: 1.6rem;
+}
+p {
+    display: block;
+    margin: 1rem 0rem;
+}
+
+.lead {
+    color: rgba(0,0,0,0.75);
+    font-size: 1.2rem;
+}
+
+code {
+    margin: 1rem 0rem;
+    padding: 0rem 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.uppgifter {
+    margin: 1rem 0rem;
+    padding: 0rem 2rem;
+    list-style: disc;
+}
+
+small {
+    font-size: 75%;
+}

@@ -42,13 +42,13 @@ class Tweet {
         }
     }
 
-    public function postTweet($body, $id = 0): array {
+    public function postTweet($body, $userid = 0): array {
         try {
             $sth = $this->dbh->prepare(
                 'INSERT INTO tweets (body, user_id, created_at, updated_at)
                 VALUES (:body, :userId, now(), now())');
             $sth->bindParam(':body', $body);
-            $sth->bindParam(':userId', $id);
+            $sth->bindParam(':userId', $userid);
             $sth->execute();
             return ['id' => $this->dbh->lastInsertId()];
         } catch (PDOException $e) {

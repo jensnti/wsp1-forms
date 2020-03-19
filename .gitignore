@@ -1,4 +1,6 @@
 include/dbinfo.php
+
 vendor/
+
 composer.lock
 .phpunit.result.cache

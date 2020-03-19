@@ -9,7 +9,10 @@
 </head>
 <body>
     <main>
-
+        <form action="tweets.php" method="POST">
+            <input type="text" name="test">
+            <input type="submit" name="submit" value="Skicka">
+        </form>
     <!-- Här ska ni skapa ett formulär för att posta ett nytt tweet
         Utgå från vilka fält som tweetet har i databasen, vilka fält måste ni ha inputs för?
         Kolla sedan på post metoden i tweet klassen.
@@ -30,18 +33,18 @@
     
     if (isset($_POST['submit'])) {
         // hantera formulär
+        var_dump($_POST);
     }
-
-
 
     /*
      * Hämta alla tweets
      */
 
-    $result = $tweet->getAll();
+    // $result = $tweet->getAll();
+    // $result = $tweet->getTweet(2);
     
     // dumpa resultatet
-    var_dump($result);
+    // var_dump($result);
 
     /*
      * Din / er uppgift är att ta bort resulatdumpen

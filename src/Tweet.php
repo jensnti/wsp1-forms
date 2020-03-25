@@ -64,5 +64,3 @@ class Tweet {
         return ['error' => 'Not implemented'];
     }
 }
-
-?>

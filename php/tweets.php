@@ -12,7 +12,12 @@
 <body>
     <main>
         <form action="tweets.php" method="POST">
-            <input type="text" name="test">
+            <textarea
+                name="tweet-body"
+                id="tweet-body"
+                rows="4"
+                maxlength="140"
+                placeholder="Write something..."></textarea>
             <input type="submit" name="submit" value="Skicka">
         </form>
         <!-- Här ska ni skapa ett formulär för att posta ett nytt tweet
@@ -36,11 +41,17 @@
         if (isset($_POST['submit'])) {
             // hantera formulär
 
-            $result = $tweet->postTweet($_POST['test']);
+            // VALIDERA DATA $_POST['tweet-body']
 
-            // echo $result['id'];
+            $filteredBody = filter_input(INPUT_POST, 'tweet-body', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            var_dump($result);
+            $newId = $tweet->postTweet($filteredBody);
+
+            $result = $tweet->getTweet($newId['id']);
+
+            echo "<p>" . $result['body'] . "</p>";
+
+            // var_dump($result);
         }
 
         /*

@@ -44,3 +44,7 @@ code {
 small {
     font-size: 75%;
 }
+
+#tweet-body {
+    width: 100%;
+}

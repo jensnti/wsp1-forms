@@ -11,26 +11,33 @@
 
 <body>
     <main>
+        <header>
+            <h1>Morgonbasunen!</h1>
+        </header>
         <form action="tweets.php" method="POST">
             <textarea
                 name="tweet-body"
                 id="tweet-body"
                 rows="4"
                 maxlength="140"
-                placeholder="Write something..."></textarea>
+                placeholder="Write something..."
+                required><?php echo $_POST['tweet-body']; ?></textarea>
             <input type="submit" name="submit" value="Skicka">
         </form>
-        <!-- Här ska ni skapa ett formulär för att posta ett nytt tweet
-        Utgå från vilka fält som tweetet har i databasen, vilka fält måste ni ha inputs för?
-        Kolla sedan på post metoden i tweet klassen.
-        Kom ihåg att ni måste filtrera och validera den input som kommer från användaren
+        <!-- 
+            Här ska ni skapa ett formulär för att posta ett nytt tweet
+            Utgå från vilka fält som tweetet har i databasen, vilka fält måste ni ha inputs för?
+            Kolla sedan på post metoden i tweet klassen.
+            Kom ihåg att ni måste filtrera och validera den input som kommer från användaren
 
-        För att kontrollera om formuläret skickats så använder ni isset, se php kod nedan
-
-    -->
+            För att kontrollera om formuläret skickats så använder ni isset, se php kod nedan.
+        -->
         <?php
         // testkod för att koppla till databasen och hämta alla tweets
-        include '../src/DbConnection.php';
+
+use phpDocumentor\Reflection\Location;
+
+include '../src/DbConnection.php';
         include '../src/Tweet.php';
 
         $dbInstance = DbConnection::getInstance();
@@ -38,7 +45,7 @@
 
         $tweet = new Tweet($dbh);
 
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit']) && strlen($_POST['tweet-body']) > 10) {
             // hantera formulär
 
             // VALIDERA DATA $_POST['tweet-body']
@@ -47,30 +54,39 @@
 
             $newId = $tweet->postTweet($filteredBody);
 
-            $result = $tweet->getTweet($newId['id']);
+            // Om vi har ett id, ladda om sidan, annars visa error
 
-            echo "<p>" . $result['body'] . "</p>";
+            if (isset($newId['error'])) {
+                // ERROR DOOOM!
+            } else {
+                header('Location: tweets.php');
+            }
 
-            // var_dump($result);
+        } elseif (isset($_POST['submit'])) {
+            echo "<p class=\"warning\">A tweet is required to be atleast 10 characters long.</p>";
         }
 
         /*
-     * Hämta alla tweets
-     */
+        * Hämta alla tweets och skriva ut dem
+        */
 
-        // $result = $tweet->getAll();
+        $tweets = $tweet->getAll();
         // $result = $tweet->getTweet(2);
 
         // dumpa resultatet
         // var_dump($result);
 
+        foreach ($tweets as $tweet) {
+            echo "<p>" . $tweet['body'] . "</p>";
+        }
+
         /*
-     * Din / er uppgift är att ta bort resulatdumpen
-     * och ersätta den med kod för att snyggt formattera varje tweet
-     * Vill ni utöka detta så får ni gå tillbaka till tidigare tweet uppgift
-     * och använda templaten för utskriften.
-     * https://github.com/jensnti/wsp1-tweet/tree/post44
-     */
+        * Din / er uppgift är att ta bort resulatdumpen
+        * och ersätta den med kod för att snyggt formattera varje tweet
+        * Vill ni utöka detta så får ni gå tillbaka till tidigare tweet uppgift
+        * och använda templaten för utskriften.
+        * https://github.com/jensnti/wsp1-tweet/tree/post44
+        */
 
         ?>
     </main>

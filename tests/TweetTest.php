@@ -30,6 +30,8 @@ class TweetTest extends TestCase
 
         $this->assertArrayHasKey('id', $result, 'failed to find key in result');
         $this->assertArrayHasKey('user_id', $result, 'failed to find key in result');
+        // kolla så att body finns (och att den är 140 tecken)
+        // kolla så att vi har datumfält
 
         /* Skapa test som kontrollerar all fält från tweet databasen */
 
@@ -80,7 +82,7 @@ class TweetTest extends TestCase
         $tweet = new Tweet($dbh);
 
         $id = 0;
-        $result = $tweet->getAllFrom($id); // Denna metod finns men är inte färdig
+        $result = $tweet->getAllFromUser($id); // Denna metod finns men är inte färdig
 
         $this->assertArrayHasKey('body', $result[0], 'failed to find data in result');
     }

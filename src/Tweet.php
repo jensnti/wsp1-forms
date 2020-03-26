@@ -56,7 +56,7 @@ class Tweet {
         }
     }
 
-    public function getAllFrom($id): array {
+    public function getAllFromUsers($id): array {
         /* Här är ditt/ert jobb att implementera den databasfunktion som
          * returnerar alla tweets från en specifik user
          * returvärdet ska vara en array med users alla poster från databasen

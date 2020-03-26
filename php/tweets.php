@@ -35,9 +35,7 @@
         <?php
         // testkod för att koppla till databasen och hämta alla tweets
 
-use phpDocumentor\Reflection\Location;
-
-include '../src/DbConnection.php';
+        include '../src/DbConnection.php';
         include '../src/Tweet.php';
 
         $dbInstance = DbConnection::getInstance();
@@ -75,6 +73,10 @@ include '../src/DbConnection.php';
 
         // dumpa resultatet
         // var_dump($result);
+
+        // for ($i = 0; $i < count($tweets); $i++) {
+        //     echo "<p>" . $tweets[$i]['body'] . "</p>";
+        // }
 
         foreach ($tweets as $tweet) {
             echo "<p>" . $tweet['body'] . "</p>";
